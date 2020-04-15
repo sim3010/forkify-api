@@ -3,21 +3,21 @@ package org.simran.model;
 import java.util.List;
 
 public class Recommendation {	
-	long custId;
+	long mobile;
 	List<Restaurant> recommendations;
 	
-	public Recommendation(long custId,List<Restaurant> recommendations) {
-		this.custId = custId;
+	public Recommendation(long mobile,List<Restaurant> recommendations) {
+		this.mobile = mobile;
 		this.recommendations = recommendations;
 	}
 	public Recommendation() {
 		// TODO Auto-generated constructor stub
 	}
-	public long getCustId() {
-		return custId;
+	public long getMobile() {
+		return mobile;
 	}
-	public void setCustId(long custId) {
-		this.custId = custId;
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
 	}
 	public List<Restaurant> getRecommendations() {
 		return recommendations;

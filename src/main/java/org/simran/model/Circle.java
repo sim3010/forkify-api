@@ -3,19 +3,19 @@ package org.simran.model;
 import java.util.List;
 
 public class Circle {
-	long custId;
+	long mobile;
 	List<Customer> circle;
 	
-	public Circle(long custId,List<Customer> circle) {
-		this.custId = custId;
+	public Circle(long mobile,List<Customer> circle) {
+		this.mobile = mobile;
 		this.circle = circle;
 	}
 	
-	public long getCustId() {
-		return custId;
+	public long getMobile() {
+		return mobile;
 	}
-	public void setCustId(long custId) {
-		this.custId = custId;
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
 	}
 	public List<Customer> getCircle() {
 		return circle;

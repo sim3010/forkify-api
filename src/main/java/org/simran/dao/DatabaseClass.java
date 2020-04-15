@@ -118,7 +118,7 @@ public class DatabaseClass {
 	public static List<Order> getOrderByCustomer(long mobile){
 		List<Order> custOrders = new ArrayList<>();
 		for(int i = 0;i<orders.size();i++) {
-			if(orders.get(i).getCustId() == mobile)
+			if(orders.get(i).getMobile() == mobile)
 				custOrders.add(orders.get(i));
 		}
 		return custOrders;
@@ -149,12 +149,12 @@ public class DatabaseClass {
 		List<Customer> myCircle = new ArrayList<>();
 		List<CircleService> myRecomm = new ArrayList<>();
 		for(int i = 0;i < circles.size(); i++) {
-			if(circles.get(i).getCustId() == custId)
+			if(circles.get(i).getMobile() == custId)
 				myCircle = circles.get(i).getCircle();
 		}
 		for(int  i = 0;i < myCircle.size(); i++) {
 			for(int j = 0;j < recommendations.size(); j++) {
-				if(myCircle.get(i).getMobile() == recommendations.get(j).getCustId()) {
+				if(myCircle.get(i).getMobile() == recommendations.get(j).getMobile()) {
 					for(int k = 0;k < recommendations.get(j).getRecommendations().size(); k++) {
 						myRecomm.add(new CircleService(myCircle.get(i),recommendations.get(j).getRecommendations().get(k)));
 					}
@@ -172,7 +172,7 @@ public class DatabaseClass {
 				rest = restaurants.get(i);
 		}
 		for(int i = 0;i < recommendations.size(); i++) {
-			if(recommendations.get(i).getCustId() == mobile) {
+			if(recommendations.get(i).getMobile() == mobile) {
 				if(!recommendations.get(i).getRecommendations().contains(rest))
 					recommendations.get(i).getRecommendations().add(rest);
 				return recommendations.get(i);
@@ -181,5 +181,26 @@ public class DatabaseClass {
 		return new Recommendation();
 	}
 	
-	
+	public static boolean expandCircle(long mobile, long friendMobile, String password) {
+		Customer friend = new Customer();
+		
+		for(int i = 0; i < customers.size(); i++) {
+			if(customers.get(i).getMobile() == mobile) {
+				if(!customers.get(i).getPassword().equals(password))
+					return false;
+			}
+			else if(customers.get(i).getMobile() == friendMobile)
+				friend = customers.get(i);
+		}
+		if(friend == null)
+			return false;
+		for(int i = 0; i < circles.size(); i++) {
+			if(circles.get(i).getMobile() == mobile) {
+				circles.get(i).getCircle().add(friend);
+				return true;
+			}
+		}
+		circles.add(0, new Circle(mobile,new ArrayList<Customer>(Arrays.asList(friend))));
+		return true;
+	}
 }

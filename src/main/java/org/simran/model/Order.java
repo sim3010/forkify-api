@@ -6,17 +6,17 @@ import java.util.Date;
 public class Order {
 	long orderId;
 	long restId;
-	long custId;
+	long mobile;
 	Date date;
 	String orderStatus;
 	
 	public Order() {
 		
 	}
-	public Order(long orderId,long restId,long custId,Date date,String orderStatus){
+	public Order(long orderId,long restId,long mobile,Date date,String orderStatus){
 		this.orderId = orderId;
 		this.restId = restId;
-		this.custId = custId;
+		this.mobile = mobile;
 		this.date = date;
 		this.orderStatus = orderStatus;
 	}
@@ -32,11 +32,11 @@ public class Order {
 	public void setRestId(long restId) {
 		this.restId = restId;
 	}
-	public long getCustId() {
-		return custId;
+	public long getMobile() {
+		return mobile;
 	}
-	public void setCustId(long custId) {
-		this.custId = custId;
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
 	}
 	public Date getDate() {
 		return date;
