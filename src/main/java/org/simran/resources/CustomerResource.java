@@ -7,7 +7,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.simran.services.CustomerService;
-import org.simran.model.CircleResource;
+import org.simran.model.Circle;
 import org.simran.model.CircleService;
 import org.simran.model.Customer;
 import org.simran.model.Order;
@@ -68,11 +68,11 @@ public class CustomerResource {
 	}
 	
 	@POST
-	@Path("/circle")
+	@Path("/{custId}/circle")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public CircleResource expandCircle(CircleResource cr) {
-		return customerService.expandCircle(cr);
+	public Circle expandCircle(long friendMobile,@PathParam("custId") long mobile) {
+		return customerService.expandCircle(mobile,friendMobile);
 	}
 	
 	

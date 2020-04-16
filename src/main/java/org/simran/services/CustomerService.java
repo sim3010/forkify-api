@@ -5,7 +5,7 @@ package org.simran.services;
 import java.util.ArrayList;
 import java.util.List;
 import org.simran.dao.DatabaseClass;
-import org.simran.model.CircleResource;
+import org.simran.model.Circle;
 import org.simran.model.CircleService;
 import org.simran.model.Customer;
 import org.simran.model.Order;
@@ -52,11 +52,7 @@ public class CustomerService {
 		return DatabaseClass.postRecommendation(mobile,restId);
 	}
 	
-	public CircleResource expandCircle(CircleResource cr) {
-		boolean result = DatabaseClass.expandCircle(cr.getMobile(),cr.getFriendMobile(),cr.getPassword());
-		if(result)
-			return cr;
-		else
-			return new CircleResource();
+	public Circle expandCircle(long mobile,long friendMobile) {
+		return DatabaseClass.expandCircle(mobile,friendMobile);
 	}
 }

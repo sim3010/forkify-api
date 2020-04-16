@@ -181,26 +181,22 @@ public class DatabaseClass {
 		return new Recommendation();
 	}
 	
-	public static boolean expandCircle(long mobile, long friendMobile, String password) {
+	public static Circle expandCircle(long mobile, long friendMobile) {
 		Customer friend = new Customer();
 		
 		for(int i = 0; i < customers.size(); i++) {
-			if(customers.get(i).getMobile() == mobile) {
-				if(!customers.get(i).getPassword().equals(password))
-					return false;
-			}
-			else if(customers.get(i).getMobile() == friendMobile)
+			if(customers.get(i).getMobile() == friendMobile)
 				friend = customers.get(i);
 		}
 		if(friend == null)
-			return false;
+			return null;
 		for(int i = 0; i < circles.size(); i++) {
 			if(circles.get(i).getMobile() == mobile) {
 				circles.get(i).getCircle().add(friend);
-				return true;
+				return circles.get(i);
 			}
 		}
 		circles.add(0, new Circle(mobile,new ArrayList<Customer>(Arrays.asList(friend))));
-		return true;
+		return circles.get(0);
 	}
 }
