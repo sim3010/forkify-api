@@ -9,6 +9,10 @@ public class CircleService {
 		this.restaurant = restaurant;
 	}
 	
+	public CircleService() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Customer getCustomer() {
 		return customer;
 	}

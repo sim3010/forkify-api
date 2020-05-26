@@ -1,7 +1,6 @@
 package org.simran.model;
 
-
-import java.util.Date;
+import java.sql.Date;
 
 public class Order {
 	long orderId;

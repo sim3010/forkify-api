@@ -26,8 +26,8 @@ public class RestaurantResource {
 	@GET
 	@Path("/{restId}/dishes")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Dish> getDishByRestaurant(@PathParam("restId") long restId){
-		return restaurantService.getDishByRestaurant(restId);
+	public List<Dish> getDishesByRestaurant(@PathParam("restId") long restId){
+		return restaurantService.getDishesByRestaurant(restId);
 	}
 	
 }
